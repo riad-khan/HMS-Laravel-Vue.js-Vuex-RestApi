@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 
 
 class LoginController extends Controller
@@ -37,7 +37,13 @@ class LoginController extends Controller
 
         $data['name'] = $request->name;
         $data['email'] = $request->email;
-        $data['password'] = bcrypt($request->password);
+        $hashed = Hash::make($request->password, [
+            'memory' => 1024,
+            'time' => 2,
+            'threads' => 2,
+        ]);
+
+        $data['password'] = $hashed ;
 
         User::create($data);
 
