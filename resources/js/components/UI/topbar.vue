@@ -1,6 +1,6 @@
 <template>
     <!-- Top Navigation -->
-    <nav class="navbar navbar-default" v-show="$route.path === '/' || $route.path ==='/register' || $route.path === '/forgotPassword'|| $route.path === '/print' ? false : true" style="display: none;">
+    <nav class="navbar navbar-default"  v-if="!['login', 'register','reset','forgot'].includes($route.name)">
         <div class="container-fluid">
             <div class="responsive-logo">
                 <a href="index.html"><img src="images/logo-dark.png" class="logo" alt="logo"></a>

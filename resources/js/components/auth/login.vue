@@ -39,6 +39,11 @@
                             <!-- /Login Button -->
                             <!-- Links -->
                             <div class="auth-footer-text">
+                                <small>Forgot Password ?,
+                                    <router-link to="/forgot-password">Reset Password</router-link> Here</small>
+                            </div>
+
+                            <div class="auth-footer-text">
                                 <small>New Patient,
                                     <router-link to="/register">Sign-up</router-link> Here</small>
                             </div>

@@ -45,7 +45,7 @@
 <div id="app">
 <div class="wrapper">
     <!-- Sidebar -->
-    <nav id="sidebar" class="proclinic-bg" v-show="$route.path === '/' || $route.path ==='/register' || $route.path === '/forgotPassword'|| $route.path === '/print' ? false : true" style="display: none;">
+    <nav id="sidebar" class="proclinic-bg" v-if="!['login', 'register','reset','forgot'].includes($route.name)">
         <div class="sidebar-header">
             <a href="index.html"><img src="{{asset('hms/images/logo.png')}}" class="logo" alt="logo"></a>
         </div>

@@ -106,7 +106,33 @@ const actions ={
                 })
         }
 
-    }
+    },
+    forgotPassword({}, resets){
+        axios.post('/api/password/forgot',{
+            email: resets.email
+        })
+            .then( () =>{
+                new Noty({
+                    type: 'info',
+                    layout: 'topRight',
+                    text: 'password Reset email sent to your email address',
+                    timeout: 3000,
+                }).show();
+            })
+            .catch((error) => {
+                new Noty({
+                    type: 'error',
+                    layout: 'topRight',
+                    text: 'you can request 1 password reset email per minute',
+                    timeout: 3000,
+                }).show();
+            })
+
+
+    },
+
+
+
 
 };
 

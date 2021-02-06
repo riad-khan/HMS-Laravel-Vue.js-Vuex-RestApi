@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login','LoginController@login');
-Route::post('/register','LoginController@register');
-Route::post('/logout', 'LoginController@logout');
+Route::post('/login','api\LoginController@login');
+Route::post('/register','api\LoginController@register');
+Route::post('/logout', 'api\LoginController@logout');
+Route::post('/password/forgot','api\ForgotPasswordController@sendResetLinkEmail');
+Route::post('/password/reset','api\ResetPasswordController@reset');
+
