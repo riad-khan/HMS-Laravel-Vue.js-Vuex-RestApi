@@ -8,7 +8,10 @@ require('./bootstrap');
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Chartkick from 'vue-chartkick'
+import Chart from 'chart.js'
 
+Vue.use(Chartkick.use(Chart))
 
 Vue.use(VueRouter)
 
@@ -43,7 +46,7 @@ import store from "./store"
 //import Ui components
 
 Vue.component('topbar', require('./components/UI/topbar').default);
-
+Vue.component('chart', require('./components/UI/chart').default);
 
 export const router = new VueRouter({
     routes, // short for `routes: routes`

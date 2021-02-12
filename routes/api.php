@@ -19,9 +19,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
 Route::post('/login','api\LoginController@login');
 Route::post('/register','api\LoginController@register');
 Route::post('/logout', 'api\LoginController@logout');
 Route::post('/password/forgot','api\ForgotPasswordController@sendResetLinkEmail');
 Route::post('/password/reset','api\ResetPasswordController@reset');
+
+
+Route::apiResource('/doctors','api\DoctorController')->middleware('auth:api');
 

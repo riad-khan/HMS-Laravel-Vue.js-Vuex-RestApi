@@ -1,5 +1,5 @@
 import {router} from '../../app.js'
-
+import Api from '../../api/api.js'
 
 const state ={
     user:{}
@@ -11,14 +11,13 @@ const mutations ={
     }
 };
 const actions ={
-    userLogin( {}, user ){
-        axios.post('/api/login',{
+  async userLogin( {}, user ){
+      await  Api().post('/login',{
             email: user.email,
             password : user.password
         })
-            .then( response =>{
+          .then( response =>{
                //store token
-
                 if(response.data.access_token){
                     localStorage.setItem(
                         'access_token',
@@ -62,14 +61,14 @@ const actions ={
         router.push("/")
     },
 
-    getUser({commit}){
-        axios.get('/api/user')
+   async getUser({commit}){
+      await Api().get('/user')
             .then( response =>{
                 commit('SetUser', response.data)
             })
     },
 
-    registerUser({}, form){
+    async registerUser({}, form){
      let  password = form.password
       let  confirmPass = form.confirmPassword
 
@@ -89,7 +88,7 @@ const actions ={
             }).show()
         }
         else{
-            axios.post('/api/register',{
+           await Api().post('/register',{
                 email : form.email,
                 name: form.name,
                 password: form.password,
@@ -107,8 +106,8 @@ const actions ={
         }
 
     },
-    forgotPassword({}, resets){
-        axios.post('/api/password/forgot',{
+    async forgotPassword({}, resets){
+      await Api().post('/password/forgot',{
             email: resets.email
         })
             .then( () =>{
